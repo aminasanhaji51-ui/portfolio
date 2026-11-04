@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Amina Sanhaji, Product Builder">
+<meta property="og:description" content="Je transforme vos besoins métier en outils qui fonctionnent.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f7f7f4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='9' width='14' height='14' rx='3' transform='rotate(45 16 16)' fill='%23f54e00'/%3E%3C/svg%3E">
+<title>Amina Sanhaji, Product Builder</title>
+<meta name="description" content="Amina Sanhaji, Product Builder. Plus de 20 ans de systèmes d'information au service d'outils métier utiles : cadrage, prototypes, ERP, données et recette.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: éditorial calme sur papier crème — une colonne de 1200px, rythme de 80px,
+   une seule pièce « produit » (la maquette d'atelier du hero), tout le reste en hairlines. */
+:root{
+  --canvas:#f7f7f4; --canvas-soft:#fafaf7; --card:#ffffff; --strong:#e6e5e0;
+  --hair:#e6e5e0; --hair-soft:#efeee8; --hair-strong:#cfcdc4;
+  --ink:#26251e; --body:#5a5852; --muted:#76736a; --muted-soft:#a09c92;
+  --primary:#f54e00; --cta:#d04200; --cta-press:#b23800; --on-cta:#ffffff;
+  --t-think:#dfa88f; --t-grep:#9fc9a2; --t-read:#9fbbe0; --t-edit:#c0a8dd; --t-done:#c08532;
+  --pill-ink:#26251e; --success:#1f8a65;
+  --sel:#f9d7c4;
+  --code-key:#9a4a1d; --code-head:#26251e; --code-dim:#a09c92;
+
+  --sans:"Inter","CursorGothic",system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+
+  --r-sm:6px; --r-md:8px; --r-lg:12px;
+  --section:80px; --wrap:1200px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --canvas:#191814; --canvas-soft:#1f1e19; --card:#22211c; --strong:#302f28;
+  --hair:#302f28; --hair-soft:#29281f; --hair-strong:#46443b;
+  --ink:#f1efe8; --body:#bdb9ad; --muted:#949083; --muted-soft:#6f6c62;
+  --primary:#ff6a26; --cta:#d04200; --cta-press:#b23800; --on-cta:#ffffff;
+  --pill-ink:#1a1914; --sel:#5a2a12;
+  --code-key:#f0a070; --code-head:#f1efe8; --code-dim:#6f6c62;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --canvas:#191814; --canvas-soft:#1f1e19; --card:#22211c; --strong:#302f28;
+  --hair:#302f28; --hair-soft:#29281f; --hair-strong:#46443b;
+  --ink:#f1efe8; --body:#bdb9ad; --muted:#949083; --muted-soft:#6f6c62;
+  --primary:#ff6a26; --cta:#d04200; --cta-press:#b23800; --on-cta:#ffffff;
+  --pill-ink:#1a1914; --sel:#5a2a12;
+  --code-key:#f0a070; --code-head:#f1efe8; --code-dim:#6f6c62;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+img{max-width:100%}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;
+  background:var(--canvas); color:var(--body);
+  font:400 16px/1.55 var(--sans); letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--canvas)}
+::selection{background:var(--sel);color:var(--ink)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:4px}
+h1,h2,h3{color:var(--ink);font-weight:400;margin:0;text-wrap:balance}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+
+.wrap{max-width:calc(var(--wrap) + 2*24px);margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:640px){.wrap{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}}
+section{padding-block:var(--section)}
+section + section{border-top:1px solid var(--hair)}
+
+/* ---------- skip + nav ---------- */
+.skip{position:absolute;left:-9999px;top:8px;background:var(--ink);color:var(--canvas);padding:8px 12px;border-radius:var(--r-md);z-index:30}
+.skip:focus{left:16px}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--canvas) 92%,transparent);
+  backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--hair)}
+.nav .wrap{height:64px;display:flex;align-items:center;gap:32px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:500;font-size:15px;letter-spacing:-.01em;white-space:nowrap}
+.mark i{width:9px;height:9px;border-radius:2px;background:var(--primary);display:block;transform:rotate(45deg)}
+.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font:500 14px/1.4 var(--sans);color:var(--body)}
+.nav ul a:hover{color:var(--ink)}
+.nav .spacer{flex:1}
+@media (max-width:860px){.nav ul{display:none}}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:var(--r-md);
+  font:500 14px/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:background-color .15s ease,border-color .15s ease,color .15s ease}
+.btn-primary{background:var(--cta);color:var(--on-cta)}
+.btn-primary:hover{background:var(--cta-press)}
+.btn-primary:active{background:var(--cta-press)}
+.btn-ink{background:var(--ink);color:var(--canvas);height:44px;padding:0 20px}
+.btn-ink:hover{background:color-mix(in srgb,var(--ink) 86%,var(--canvas))}
+.btn-secondary{background:var(--card);color:var(--ink);border-color:var(--hair-strong)}
+.btn-secondary:hover{border-color:var(--muted-soft)}
+.link{display:inline-flex;align-items:center;gap:6px;font:500 14px/1 var(--sans);color:var(--ink);text-decoration:none;padding:12px 4px}
+.link svg,.btn svg{width:14px;height:14px;flex:none}
+.link:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--hair-strong)}
+
+/* ---------- hero ---------- */
+.hero{padding-block:72px 80px}
+.hero h1{font-size:clamp(34px,6.2vw,72px);line-height:1.06;letter-spacing:-.03em;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--primary)}
+.hero .lede{margin-top:24px;max-width:58ch;font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--body)}
+.hero .lede strong{color:var(--ink);font-weight:500}
+.hero .row{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.status{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+.status span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 3px color-mix(in srgb,var(--success) 22%,transparent)}
+
+/* ---------- atelier (IDE mockup) ---------- */
+.atelier{margin-top:56px}
+.ide{background:var(--card);border:1px solid var(--hair);border-radius:var(--r-lg);overflow:hidden}
+.ide-bar{display:flex;align-items:center;gap:12px;height:40px;padding:0 14px;border-bottom:1px solid var(--hair);font:400 12px/1 var(--mono);color:var(--muted)}
+.ide-bar .lights{display:flex;gap:6px}
+.ide-bar .lights i{width:10px;height:10px;border-radius:50%;background:var(--hair-strong);display:block}
+.ide-bar .path{flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ide-body{display:grid;grid-template-columns:200px minmax(0,1fr) 340px;gap:8px;padding:8px;background:var(--card)}
+.pane{background:var(--canvas-soft);border:1px solid var(--hair-soft);border-radius:var(--r-md);padding:16px;min-width:0;font:400 13px/1.6 var(--mono);color:var(--body)}
+.pane h4{margin:0 0 12px;font:600 11px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tree{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.tree li{padding:3px 8px;border-radius:var(--r-sm);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tree li.dir{color:var(--muted)}
+.tree li.in{padding-left:20px}
+.tree li.on{background:var(--strong);color:var(--ink)}
+.editor{overflow-x:auto}
+.editor pre{margin:0;font:inherit;white-space:pre}
+.editor .ln{display:inline-block;width:2.2em;color:var(--code-dim);user-select:none;text-align:right;margin-right:14px}
+.c-h{color:var(--code-head);font-weight:500}
+.c-k{color:var(--code-key)}
+.c-d{color:var(--code-dim)}
+.caret{display:inline-block;width:7px;height:15px;background:var(--primary);vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.log{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.log li{display:grid;gap:6px;animation:rise .55s cubic-bezier(.16,1,.3,1) both}
+.log li:nth-child(1){animation-delay:.15s}.log li:nth-child(2){animation-delay:.35s}.log li:nth-child(3){animation-delay:.55s}
+.log li:nth-child(4){animation-delay:.75s}.log li:nth-child(5){animation-delay:.95s}
+@keyframes rise{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+.pill{justify-self:start;display:inline-block;padding:4px 10px;border-radius:9999px;font:600 11px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--pill-ink)}
+.p-think{background:var(--t-think)}.p-grep{background:var(--t-grep)}.p-read{background:var(--t-read)}.p-edit{background:var(--t-edit)}.p-done{background:var(--t-done)}
+.log p{font:400 13px/1.5 var(--sans);color:var(--body)}
+.atelier figcaption{margin-top:12px;font-size:13px;color:var(--muted)}
+
+@media (prefers-reduced-motion:reduce){.log li{animation:none}.caret{animation:none}}
+@media (max-width:1024px){.ide-body{grid-template-columns:minmax(0,1fr) 300px}.pane.files{display:none}}
+@media (max-width:720px){.ide-body{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- section heads ---------- */
+.head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px 64px;align-items:end;margin-bottom:48px}
+.head h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;letter-spacing:-.022em}
+.head p{max-width:56ch}
+@media (max-width:860px){.head{grid-template-columns:1fr}}
+
+/* ---------- offre ---------- */
+.offer{border-top:1px solid var(--hair-strong)}
+.offer-row{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:16px 48px;padding:28px 0;border-bottom:1px solid var(--hair)}
+.offer-row h3{font-size:22px;line-height:1.3;letter-spacing:-.01em}
+.offer-row .who{margin-top:6px;font-size:14px;color:var(--muted)}
+.offer-row ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px;color:var(--ink)}
+.offer-row li{display:flex;gap:10px;align-items:baseline}
+.offer-row li::before{content:"";width:6px;height:1px;background:var(--hair-strong);flex:none;transform:translateY(-4px)}
+.tag{display:inline-block;margin-top:10px;padding:3px 9px;border-radius:9999px;background:var(--strong);font:600 11px/1.4 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+@media (max-width:860px){.offer-row{grid-template-columns:1fr}}
+.for{margin-top:32px;font-size:15px;color:var(--body);max-width:70ch}
+.for strong{color:var(--ink);font-weight:500}
+
+/* ---------- statement ---------- */
+.statement{padding-block:96px}
+.statement blockquote{margin:0;font-size:clamp(28px,4.4vw,52px);line-height:1.12;letter-spacing:-.028em;color:var(--ink);max-width:22ch;text-wrap:balance}
+.statement blockquote span{color:var(--muted-soft)}
+.statement .cols{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;max-width:1000px}
+.statement .cols h3{font:600 16px/1.4 var(--sans);margin-bottom:6px}
+.statement .cols p{font-size:15px}
+@media (max-width:760px){.statement .cols{grid-template-columns:1fr;gap:20px}}
+
+/* ---------- réalisations ---------- */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.case{background:var(--card);border:1px solid var(--hair);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.case.lead{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px 56px;padding:36px}
+.case .meta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13px;color:var(--muted)}
+.state{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:9999px;background:var(--strong);color:var(--ink);font:600 11px/1.4 var(--sans);letter-spacing:.06em;text-transform:uppercase}
+.state i{width:6px;height:6px;border-radius:50%;background:var(--success);display:block}
+.state.past i{background:var(--muted-soft)}
+.case h3{font-size:26px;line-height:1.22;letter-spacing:-.015em}
+.case.lead h3{font-size:clamp(26px,2.8vw,34px)}
+.case .org{font:500 14px/1.4 var(--sans);color:var(--ink)}
+.case dl{margin:0;display:grid;gap:14px}
+.case dt{font:600 13px/1.4 var(--sans);color:var(--ink);margin-bottom:2px}
+.case dd{margin:0;font-size:15px}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+.tools span{font:400 12px/1 var(--mono);padding:6px 8px;border-radius:4px;border:1px solid var(--hair);color:var(--body);background:var(--canvas-soft)}
+@media (max-width:860px){.cases{grid-template-columns:1fr}.case.lead{grid-template-columns:1fr;padding:28px}}
+
+.others{margin-top:40px}
+.others h3{font:600 16px/1.4 var(--sans);margin-bottom:12px}
+.others ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.others li{padding:14px 0;border-top:1px solid var(--hair);font-size:15px}
+.others li b{font-weight:500;color:var(--ink)}
+@media (max-width:760px){.others ul{grid-template-columns:1fr}}
+
+/* ---------- méthode ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--hair-strong)}
+.step{padding:24px 24px 0 0;display:grid;gap:10px;align-content:start}
+.step + .step{padding-left:24px;border-left:1px solid var(--hair)}
+.step .n{font:500 13px/1 var(--mono);color:var(--primary)}
+.step h3{font-size:22px;line-height:1.3;letter-spacing:-.01em}
+.step p{font-size:15px}
+.step ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px;font-size:14px;color:var(--muted)}
+@media (max-width:960px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.step:nth-child(3){padding-left:0;border-left:0}.step{padding-bottom:28px}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}.step,.step + .step{padding-left:0;border-left:0;border-bottom:1px solid var(--hair)}}
+
+.ai{margin-top:56px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px 56px;align-items:start;
+  background:var(--card);border:1px solid var(--hair);border-radius:var(--r-lg);padding:36px}
+.ai h3{font-size:clamp(24px,2.6vw,30px);line-height:1.2;letter-spacing:-.018em}
+.ai .sig{margin-top:16px;font:500 13px/1.4 var(--mono);color:var(--muted)}
+.ai dl{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 32px}
+.ai dt{font:600 15px/1.4 var(--sans);color:var(--ink)}
+.ai dd{margin:2px 0 0;font-size:15px}
+@media (max-width:860px){.ai{grid-template-columns:1fr;padding:28px}}
+@media (max-width:480px){.ai dl{grid-template-columns:1fr}}
+
+/* ---------- parcours ---------- */
+.career{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px 64px}
+.timeline{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair-strong)}
+.timeline li{display:grid;grid-template-columns:132px minmax(0,1fr);gap:4px 24px;padding:16px 0;border-bottom:1px solid var(--hair)}
+.timeline .when{font:400 13px/1.6 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.timeline b{font-weight:500;color:var(--ink)}
+.timeline .role{display:block;font-size:14px;color:var(--muted)}
+@media (max-width:520px){.timeline li{grid-template-columns:1fr}}
+.side{display:grid;gap:32px;align-content:start}
+.side h3{font:600 16px/1.4 var(--sans);margin-bottom:10px}
+.side p,.side li{font-size:15px}
+.side ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:13px;padding:5px 10px;border-radius:9999px;border:1px solid var(--hair-strong);color:var(--ink);background:var(--card)}
+@media (max-width:960px){.career{grid-template-columns:1fr}}
+
+/* ---------- contact ---------- */
+.contact{padding-block:112px;text-align:left}
+.contact h2{font-size:clamp(34px,5.4vw,64px);line-height:1.06;letter-spacing:-.03em;max-width:16ch}
+.contact .lede{margin-top:20px;max-width:56ch;font-size:17px}
+.mailbox{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.addr{font:400 15px/1 var(--mono);color:var(--ink);padding:0 14px;height:44px;display:inline-flex;align-items:center;border:1px solid var(--hair-strong);border-radius:var(--r-md);background:var(--card);user-select:all;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.copied{font-size:13px;color:var(--success);min-width:80px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--hair);padding-block:48px 64px;font-size:14px}
+footer .wrap{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));gap:32px}
+footer .name{color:var(--ink);font-weight:500}
+footer p{color:var(--muted);margin-top:6px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{text-decoration:none;color:var(--body)}
+footer a:hover{color:var(--ink)}
+footer .legal{grid-column:1 / -1;border-top:1px solid var(--hair);padding-top:20px;color:var(--muted);font-size:13px}
+@media (max-width:640px){footer .wrap{grid-template-columns:1fr 1fr}footer .wrap > div:first-child{grid-column:1 / -1}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu principal</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Amina Sanhaji, retour en haut"><i aria-hidden="true"></i>Amina Sanhaji</a>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="#offre">Offre</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+      </ul>
+    </nav>
+    <span class="spacer"></span>
+    <a class="btn btn-primary" href="#contact">Me contacter</a>
+  </div>
+</header>
+
+<main id="contenu">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <h1>Je transforme vos besoins métier en <em>outils qui fonctionnent.</em></h1>
+      <p class="lede">Product Builder, je m'appuie sur <strong>plus de 20 ans de systèmes d'information</strong> (ERP, données, recette, support utilisateurs) pour cadrer un besoin, construire une première version testable avec l'aide de l'IA, puis la vérifier avec les personnes qui l'utiliseront.</p>
+      <div class="row">
+        <a class="btn btn-ink" href="#contact">Parler de votre projet</a>
+        <a class="link" href="#realisations">Voir les réalisations
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <div class="status">
+        <span><i class="dot" aria-hidden="true"></i>Ouverte aux missions et aux postes en product building</span>
+        <span>Annecy · Genève · à distance</span>
+      </div>
+
+      <figure class="atelier" aria-label="Exemple de démarche dans un espace de travail">
+        <div class="ide">
+          <div class="ide-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="path">atelier / suivi-non-conformites / besoin.md</span><span aria-hidden="true">v0.3</span></div>
+          <div class="ide-body">
+            <div class="pane files" aria-hidden="true">
+              <h4>Projet</h4>
+              <ul class="tree">
+                <li class="dir">suivi-non-conformites</li>
+                <li class="in on">besoin.md</li>
+                <li class="in">entretiens.md</li>
+                <li class="in">donnees-erp.sql</li>
+                <li class="in dir">prototype</li>
+                <li class="in">recette.md</li>
+                <li class="in">decisions.md</li>
+              </ul>
+            </div>
+            <div class="pane editor" tabindex="0" aria-label="Contenu du fichier besoin.md">
+<pre><span class="ln">1</span><span class="c-h"># Suivi des non-conformités</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="c-k">## Problème</span>
+<span class="ln">4</span>Les écarts qualité vivent dans un Excel partagé.
+<span class="ln">5</span>Personne ne sait, à l'instant, quel lot est bloqué.
+<span class="ln">6</span>
+<span class="ln">7</span><span class="c-k">## Utilisateurs</span>
+<span class="ln">8</span>- Technicien qualité : saisit un écart en atelier
+<span class="ln">9</span>- Responsable production : voit les lots bloqués
+<span class="ln">10</span>
+<span class="ln">11</span><span class="c-k">## Première version</span>
+<span class="ln">12</span>[x] Formulaire relié aux lots de l'ERP
+<span class="ln">13</span>[x] Vue « lots bloqués »
+<span class="ln">14</span>[ ] Alertes par e-mail  <span class="c-d">→ v2, après la recette</span>
+<span class="ln">15</span><span class="caret" aria-hidden="true"></span></pre>
+            </div>
+            <div class="pane">
+              <h4>Journal du projet</h4>
+              <ol class="log">
+                <li><span class="pill p-think">Comprendre</span><p>Reformuler le besoin avec la responsable qualité.</p></li>
+                <li><span class="pill p-grep">Explorer</span><p>Trois entretiens : atelier, production, direction.</p></li>
+                <li><span class="pill p-read">Lire les données</span><p>Tables articles, lots et ordres de fabrication.</p></li>
+                <li><span class="pill p-edit">Construire</span><p>Prototype : formulaire de saisie et vue par lot.</p></li>
+                <li><span class="pill p-done">Recetter</span><p>Tests avec deux utilisateurs, retours intégrés.</p></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <figcaption>Exemple illustratif de ma démarche, pas un projet client.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- OFFRE -->
+  <section id="offre">
+    <div class="wrap">
+      <div class="head">
+        <h2>Ce que je peux faire pour vous.</h2>
+        <p>Quatre façons de travailler ensemble, de la clarification d'un besoin à la mise en main d'un outil. On peut commencer par une seule.</p>
+      </div>
+      <div class="offer">
+        <div class="offer-row">
+          <div><h3>Cadrer un besoin</h3><p class="who">Quand le problème est réel mais encore flou.</p></div>
+          <p>J'écoute les personnes concernées, je décris les parcours et les règles de gestion, puis je priorise ce qui doit exister dans une première version.</p>
+          <ul><li>Spécifications fonctionnelles</li><li>User stories et backlog priorisé</li><li>Règles de gestion documentées</li></ul>
+        </div>
+        <div class="offer-row">
+          <div><h3>Construire une première version</h3><p class="who">Quand il faut voir avant de décider.</p><span class="tag">Montée en compétence</span></div>
+          <p>Je construis un prototype ou un petit outil métier utilisable, en m'aidant des outils d'IA, et je vérifie chaque résultat avant de le livrer.</p>
+          <ul><li>Prototype testable</li><li>Outil interne simple</li><li>Documentation des choix</li></ul>
+        </div>
+        <div class="offer-row">
+          <div><h3>Relier vos données</h3><p class="who">Quand l'information existe mais ne circule pas.</p></div>
+          <p>J'accompagne la mise en place d'un ERP, je construis des flux de données et des tableaux de bord qui servent vraiment au pilotage.</p>
+          <ul><li>Paramétrage ERP (Business Central, SAP)</li><li>Entrepôt de données et ETL</li><li>Tableaux de bord Power BI</li></ul>
+        </div>
+        <div class="offer-row">
+          <div><h3>Tester et accompagner</h3><p class="who">Quand l'outil existe et doit être adopté.</p></div>
+          <p>Je prépare et mène la recette, je forme les utilisateurs et j'assure le support au démarrage pour que l'outil soit réellement utilisé.</p>
+          <ul><li>Plans et cahiers de recette</li><li>Formation des utilisateurs</li><li>Support au démarrage</li></ul>
+        </div>
+      </div>
+      <p class="for">Pour qui : <strong>PME et ETI, notamment industrielles</strong>, équipes métier sans équipe produit dédiée, et équipes produit qui ont besoin d'un profil à la fois fonctionnel et technique.</p>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="statement">
+    <div class="wrap">
+      <blockquote>Junior en product building. <span>Pas en informatique.</span></blockquote>
+      <div class="cols">
+        <div><h3>Je parle métier et technique</h3><p>J'ai été développeuse, analyste, test manager et cheffe de projet. Je fais le lien entre les utilisateurs et ceux qui construisent.</p></div>
+        <div><h3>Je sais ce qu'est la mise en production</h3><p>Données à corriger, utilisateurs à former, prestataires à coordonner : j'ai vécu l'après-livraison, pas seulement le prototype.</p></div>
+        <div><h3>J'apprends en construisant</h3><p>Je développe aujourd'hui une pratique du product building assisté par IA, en gardant la rigueur de la recette.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RÉALISATIONS -->
+  <section id="realisations">
+    <div class="wrap">
+      <div class="head">
+        <h2>Des projets réels, en entreprise.</h2>
+        <p>Trois missions qui montrent comment j'aborde un besoin, construis une solution et la mets entre les mains de ses utilisateurs. Aucun chiffre n'est avancé sans être vérifiable.</p>
+      </div>
+
+      <div class="cases">
+        <article class="case lead">
+          <div style="display:grid;gap:16px;align-content:start">
+            <div class="meta"><span class="state"><i></i>En production</span><span class="num">Depuis juin 2021</span></div>
+            <h3>Un ERP, un entrepôt de données et des états de pilotage pour une PME industrielle.</h3>
+            <p class="org">Baikowski, Annecy · Cheffe de projets et support utilisateurs</p>
+          </div>
+          <dl>
+            <div><dt>La mission</dt><dd>Mettre en place l'ERP Business Central, construire l'entrepôt de données qui l'alimente et créer les états de pilotage dans Power BI.</dd></div>
+            <div><dt>Mon rôle</dt><dd>Conduite du projet, coordination avec les prestataires, support aux utilisateurs sur les équipements et les logiciels, formation.</dd></div>
+            <div><dt>Ce que cela montre</dt><dd>Porter un produit interne de bout en bout, de l'implémentation à l'usage quotidien.</dd></div>
+            <div class="tools"><span>Business Central</span><span>ETL</span><span>Power BI</span><span>O365</span></div>
+          </dl>
+        </article>
+
+        <article class="case">
+          <div class="meta"><span class="state past"><i></i>Livré</span><span class="num">2016 – 2018</span></div>
+          <h3>Qualifier un PLM, sprint après sprint.</h3>
+          <p class="org">Salomon, via Sully Group · Conceptrice-développeuse</p>
+          <dl>
+            <div><dt>La mission</dt><dd>Support et qualification du PLM (gestion du cycle de vie produit) : spécifications et recette fonctionnelle à chaque sprint, suivi du backlog.</dd></div>
+            <div><dt>Ce que cela montre</dt><dd>Travailler en agile, rédiger des spécifications testables, corriger les données en PL/SQL et documenter les anomalies.</dd></div>
+          </dl>
+          <div class="tools"><span>PLM</span><span>PL/SQL</span><span>Agile</span><span>Jira</span></div>
+        </article>
+
+        <article class="case">
+          <div class="meta"><span class="state past"><i></i>Livré</span><span class="num">2001 – 2011</span></div>
+          <h3>Dix ans au cœur des applications d'un acteur du crédit.</h3>
+          <p class="org">BNP Paribas Personal Finance, Paris</p>
+          <dl>
+            <div><dt>La mission</dt><dd>Applications Front Office et Back Office : programmation Cobol, règles de gestion, support, administration des données puis test management.</dd></div>
+            <div><dt>Ce que cela montre</dt><dd>Comprendre un système de bout en bout, modéliser les données, valider la conformité logicielle et former les utilisateurs finaux.</dd></div>
+          </dl>
+          <div class="tools"><span>Cobol</span><span>MVS</span><span>DB2</span><span>Merise</span></div>
+        </article>
+      </div>
+
+      <div class="others">
+        <h3>Autres missions</h3>
+        <ul>
+          <li><b>Geodis</b> · tableaux de bord (cubes) avec Cognos, en SQL</li>
+          <li><b>Ministère de la Transition écologique</b> · support et analyses de données SQL</li>
+          <li><b>Entremont</b> · modélisation des processus clés et indicateurs dans SAP</li>
+          <li><b>Capgemini</b> · support de production serveurs et réseaux</li>
+          <li><b>CSD (Carrefour)</b> · maintenance applicative, documentation et procédures</li>
+          <li><b>France Télévisions</b> · règles de paie pour le passage à l'euro</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTHODE -->
+  <section id="methode">
+    <div class="wrap">
+      <div class="head">
+        <h2>Du problème à la première version.</h2>
+        <p>Une démarche simple, dans cet ordre. Chaque étape produit quelque chose que vous pouvez relire, tester ou contester.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>Comprendre</h3><p>Identifier le besoin, les utilisateurs, les contraintes et ce qui compte vraiment.</p><ul><li>Entretiens</li><li>Analyse des parcours</li><li>Hypothèses</li></ul></div>
+        <div class="step"><span class="n">2</span><h3>Concevoir</h3><p>Transformer le besoin en parcours, règles de gestion et fonctionnalités priorisées.</p><ul><li>User flows</li><li>Spécifications</li><li>Backlog</li></ul></div>
+        <div class="step"><span class="n">3</span><h3>Construire</h3><p>Réaliser une première version fonctionnelle avec les outils adaptés au contexte.</p><ul><li>Prototype</li><li>Données et intégrations</li><li>Assistance IA</li></ul></div>
+        <div class="step"><span class="n">4</span><h3>Vérifier</h3><p>Tester avec les utilisateurs, corriger, documenter et préparer la suite.</p><ul><li>Recette fonctionnelle</li><li>Formation</li><li>Retours et itérations</li></ul></div>
+      </div>
+
+      <div class="ai">
+        <div>
+          <h3>L'IA accélère la construction. Elle ne remplace pas le jugement.</h3>
+          <p style="margin-top:14px">J'utilise l'IA pour explorer et construire plus vite. Je reste responsable de la compréhension du besoin, des décisions et de la vérification des résultats.</p>
+          <p class="sig">AI-assisted. Human-validated.</p>
+        </div>
+        <dl>
+          <div><dt>Explorer</dt><dd>Formuler des hypothèses et comparer des approches.</dd></div>
+          <div><dt>Construire</dt><dd>Écrire, comprendre et améliorer le code plus rapidement.</dd></div>
+          <div><dt>Automatiser</dt><dd>Relier des services et réduire les tâches répétitives.</dd></div>
+          <div><dt>Vérifier</dt><dd>Tester, repérer les erreurs et garder la main sur les décisions.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section id="parcours">
+    <div class="wrap">
+      <div class="head">
+        <h2>Un parcours dans les systèmes d'information depuis 1999.</h2>
+        <p>Du mainframe à l'ERP et à la donnée, j'ai toujours travaillé entre ceux qui utilisent les outils et ceux qui les construisent.</p>
+      </div>
+      <div class="career">
+        <ol class="timeline">
+          <li><span class="when">2021 – auj.</span><div><b>Baikowski</b>, Annecy<span class="role">Cheffe de projets et support utilisateurs</span></div></li>
+          <li><span class="when">2020</span><div><b>Capgemini</b>, Le Bourget-du-Lac<span class="role">Support production serveurs et réseaux</span></div></li>
+          <li><span class="when">2019</span><div><b>CSD (Carrefour)</b>, Aix-les-Bains<span class="role">Développeuse Cobol</span></div></li>
+          <li><span class="when">2016 – 2018</span><div><b>Sully Group</b>, Lyon<span class="role">Conceptrice-développeuse · Salomon, Geodis, Ministère</span></div></li>
+          <li><span class="when">2013 – 2014</span><div><b>Entremont</b>, Annecy<span class="role">Key user SAP</span></div></li>
+          <li><span class="when">2001 – 2011</span><div><b>BNP Paribas Personal Finance</b>, Paris<span class="role">De l'analyse-programmation au test management</span></div></li>
+          <li><span class="when">1999 – 2001</span><div><b>T&amp;D Engineering</b>, Tours<span class="role">Conceptrice-développeuse · France Télévisions, Sopra</span></div></li>
+        </ol>
+        <div class="side">
+          <div>
+            <h3>Formation</h3>
+            <ul><li>ESIP, École supérieure d'informatique professionnelle, Paris · 1998</li><li>Maîtrise de chimie, Tours · 1998</li></ul>
+          </div>
+          <div>
+            <h3>Données et langages</h3>
+            <div class="chips"><span>Oracle SQL</span><span>PL/SQL</span><span>Java</span><span>Cobol</span><span>Unix</span><span>API</span></div>
+          </div>
+          <div>
+            <h3>ERP et applications</h3>
+            <div class="chips"><span>Business Central</span><span>SAP</span><span>Power BI</span><span>Cognos</span><span>O365</span><span>SharePoint</span></div>
+          </div>
+          <div>
+            <h3>Méthodes</h3>
+            <div class="chips"><span>Agile</span><span>UML</span><span>Merise</span><span>Jira</span><span>DevOps</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Construisons quelque chose d'utile.</h2>
+      <p class="lede">Un besoin à clarifier, un outil à construire, une équipe produit à renforcer ? Écrivez-moi en quelques lignes, je vous réponds rapidement.</p>
+      <div class="mailbox">
+        <span class="addr" id="mail">amina.sanhaji@hotmail.fr</span>
+        <button class="btn btn-secondary" id="copy" type="button" style="height:44px">Copier l'adresse</button>
+        <a class="btn btn-primary" href="mailto:amina.sanhaji@hotmail.fr?subject=Projet%20product%20building" style="height:44px">Écrire un e-mail</a>
+        <span class="copied" id="copied" role="status" aria-live="polite"></span>
+      </div>
+      <div class="row" style="margin-top:20px;display:flex;flex-wrap:wrap;gap:4px 24px">
+        <a class="link" href="https://www.linkedin.com/in/aminasanhaji/" target="_blank" rel="noopener">LinkedIn
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><span class="name">Amina Sanhaji</span><p>Product Builder · Annecy, Genève, à distance</p><p>Comprendre les problèmes. Construire des outils utiles.</p></div>
+    <ul><li><a href="#offre">Offre</a></li><li><a href="#realisations">Réalisations</a></li><li><a href="#methode">Méthode</a></li></ul>
+    <ul><li><a href="#parcours">Parcours</a></li><li><a href="#contact">Contact</a></li><li><a href="https://www.linkedin.com/in/aminasanhaji/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+    <p class="legal">© 2026 Amina Sanhaji</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('copy'), out=document.getElementById('copied'), addr=document.getElementById('mail');
+  function selectAddr(){var r=document.createRange();r.selectNodeContents(addr);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+  btn.addEventListener('click',function(){
+    var text=addr.textContent.trim();
+    function fallback(){selectAddr();out.textContent='Adresse sélectionnée';}
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){out.textContent='Copiée';setTimeout(function(){out.textContent='';},2400);},fallback);
+      }else{fallback();}
+    }catch(e){fallback();}
+  });
+})();
+</script>
+</body>
+</html>
